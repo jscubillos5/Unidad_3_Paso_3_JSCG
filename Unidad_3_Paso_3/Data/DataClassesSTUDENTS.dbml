@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="STUDENTS" Class="DataClassesSTUDENTSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-IO8T4S0;Initial Catalog=STUDENTS;Integrated Security=True" SettingsObjectName="Unidad_3_Paso_3.My.MySettings" SettingsPropertyName="STUDENTSConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.PERSON" Member="PERSON">
+    <Type Name="PERSON">
+      <Column Name="ID_PERSON" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDENTIFICATION_DOCUMENT" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="TYPE_IDENTITY_DOCUMENT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FIRST_NAME" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="MIDDLE_NAME" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="SURNAME" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="SECOND_SURNAME" Type="System.String" DbType="NChar(25)" CanBeNull="true" />
+      <Column Name="TELEPHONE" Type="System.String" DbType="NChar(15)" CanBeNull="true" />
+      <Column Name="ADDRESS" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="TYPE_SEX" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="TYPE_SEX_PERSON" Member="TYPE_SEX1" ThisKey="TYPE_SEX" OtherKey="ID_TYPE_SEX" Type="TYPE_SEX" IsForeignKey="true" />
+      <Association Name="TYPE_IDENTITY_DOCUMENT_PERSON" Member="TYPE_IDENTITY_DOCUMENT1" ThisKey="TYPE_IDENTITY_DOCUMENT" OtherKey="ID_TYPE_IDENTITY_DOCUMENT" Type="TYPE_IDENTITY_DOCUMENT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TYPE_SEX" Member="TYPE_SEX">
+    <Type Name="TYPE_SEX">
+      <Column Name="ID_TYPE_SEX" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CODE" Type="System.String" DbType="NChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="TYPE_SEX_PERSON" Member="PERSON" ThisKey="ID_TYPE_SEX" OtherKey="TYPE_SEX" Type="PERSON" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[USER]" Member="USER">
+    <Type Name="USER">
+      <Column Name="ID_USER" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="USER_NAME" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="PASSWORD" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TYPE_IDENTITY_DOCUMENT" Member="TYPE_IDENTITY_DOCUMENT">
+    <Type Name="TYPE_IDENTITY_DOCUMENT">
+      <Column Name="ID_TYPE_IDENTITY_DOCUMENT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CODE" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="DESCRIPTION" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ONLY_NUMBER" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="TYPE_IDENTITY_DOCUMENT_PERSON" Member="PERSON" ThisKey="ID_TYPE_IDENTITY_DOCUMENT" OtherKey="TYPE_IDENTITY_DOCUMENT" Type="PERSON" />
+    </Type>
+  </Table>
+</Database>

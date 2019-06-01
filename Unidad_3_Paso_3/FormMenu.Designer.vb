@@ -26,9 +26,9 @@ Partial Class FormMenu
         Me.MenuStripFormMenu = New System.Windows.Forms.MenuStrip()
         Me.StudentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RegisterStudentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ModificarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ConsultarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ModifyStudentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteStudentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SearchStudentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStripFormMenu.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -38,13 +38,13 @@ Partial Class FormMenu
         Me.MenuStripFormMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StudentsToolStripMenuItem})
         Me.MenuStripFormMenu.Location = New System.Drawing.Point(0, 0)
         Me.MenuStripFormMenu.Name = "MenuStripFormMenu"
-        Me.MenuStripFormMenu.Size = New System.Drawing.Size(800, 28)
+        Me.MenuStripFormMenu.Size = New System.Drawing.Size(754, 28)
         Me.MenuStripFormMenu.TabIndex = 0
         Me.MenuStripFormMenu.Text = "MenuStrip1"
         '
         'StudentsToolStripMenuItem
         '
-        Me.StudentsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegisterStudentsToolStripMenuItem, Me.ModificarToolStripMenuItem, Me.EliminarToolStripMenuItem, Me.ConsultarToolStripMenuItem})
+        Me.StudentsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegisterStudentsToolStripMenuItem, Me.ModifyStudentsToolStripMenuItem, Me.DeleteStudentsToolStripMenuItem, Me.SearchStudentsToolStripMenuItem})
         Me.StudentsToolStripMenuItem.Name = "StudentsToolStripMenuItem"
         Me.StudentsToolStripMenuItem.Size = New System.Drawing.Size(96, 24)
         Me.StudentsToolStripMenuItem.Text = "Estudiantes"
@@ -55,33 +55,36 @@ Partial Class FormMenu
         Me.RegisterStudentsToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.RegisterStudentsToolStripMenuItem.Text = "Registrar"
         '
-        'ModificarToolStripMenuItem
+        'ModifyStudentsToolStripMenuItem
         '
-        Me.ModificarToolStripMenuItem.Name = "ModificarToolStripMenuItem"
-        Me.ModificarToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
-        Me.ModificarToolStripMenuItem.Text = "Modificar"
+        Me.ModifyStudentsToolStripMenuItem.Name = "ModifyStudentsToolStripMenuItem"
+        Me.ModifyStudentsToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.ModifyStudentsToolStripMenuItem.Text = "Modificar"
         '
-        'EliminarToolStripMenuItem
+        'DeleteStudentsToolStripMenuItem
         '
-        Me.EliminarToolStripMenuItem.Name = "EliminarToolStripMenuItem"
-        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
-        Me.EliminarToolStripMenuItem.Text = "Eliminar"
+        Me.DeleteStudentsToolStripMenuItem.Name = "DeleteStudentsToolStripMenuItem"
+        Me.DeleteStudentsToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.DeleteStudentsToolStripMenuItem.Text = "Eliminar"
         '
-        'ConsultarToolStripMenuItem
+        'SearchStudentsToolStripMenuItem
         '
-        Me.ConsultarToolStripMenuItem.Name = "ConsultarToolStripMenuItem"
-        Me.ConsultarToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
-        Me.ConsultarToolStripMenuItem.Text = "Consultar"
+        Me.SearchStudentsToolStripMenuItem.Name = "SearchStudentsToolStripMenuItem"
+        Me.SearchStudentsToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
+        Me.SearchStudentsToolStripMenuItem.Text = "Consultar"
         '
         'FormMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(754, 252)
         Me.Controls.Add(Me.MenuStripFormMenu)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStripFormMenu
+        Me.MaximumSize = New System.Drawing.Size(772, 299)
+        Me.MinimumSize = New System.Drawing.Size(772, 299)
         Me.Name = "FormMenu"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Menú principal"
         Me.MenuStripFormMenu.ResumeLayout(False)
         Me.MenuStripFormMenu.PerformLayout()
@@ -93,7 +96,7 @@ Partial Class FormMenu
     Friend WithEvents MenuStripFormMenu As MenuStrip
     Friend WithEvents StudentsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RegisterStudentsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ModificarToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents EliminarToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ConsultarToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ModifyStudentsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DeleteStudentsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SearchStudentsToolStripMenuItem As ToolStripMenuItem
 End Class

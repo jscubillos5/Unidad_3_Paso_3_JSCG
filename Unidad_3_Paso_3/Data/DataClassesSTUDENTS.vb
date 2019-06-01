@@ -1,0 +1,2 @@
+Partial Public Class DataClassesSTUDENTSDataContext
+End Class
