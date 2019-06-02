@@ -62,7 +62,7 @@ Partial Class FormRegisterStudent
         '
         Me.LabelHelpFormRegisterStudent.Location = New System.Drawing.Point(12, 13)
         Me.LabelHelpFormRegisterStudent.Name = "LabelHelpFormRegisterStudent"
-        Me.LabelHelpFormRegisterStudent.Size = New System.Drawing.Size(872, 25)
+        Me.LabelHelpFormRegisterStudent.Size = New System.Drawing.Size(898, 25)
         Me.LabelHelpFormRegisterStudent.TabIndex = 10
         Me.LabelHelpFormRegisterStudent.Text = "Bienvenido señor usuario en este formulario, usted podra registrar un nuevo estud" &
     "iante."

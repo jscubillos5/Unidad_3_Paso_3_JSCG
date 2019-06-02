@@ -25,7 +25,7 @@ Public Class FormRegisterStudent
                     student.TYPE_SEX = ComboBoxTypeSex.SelectedValue
                     db.PERSON.InsertOnSubmit(student)
                     db.SubmitChanges()
-                    MessageBox.Show("El estudiante: " + student.FIRST_NAME + " " + student.SURNAME + ". Fue registrado con éxito.", "Estudiante registrado", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("El estudiante: " + student.FIRST_NAME + " " + student.SURNAME + ". Fue registrado con éxito.", "Estudiante registrado", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     CleanForm()
                 Catch ex As Exception
                     MessageBox.Show("Atención, señor usuario ocurrio un error al registrar el estudiante, el error especifico es: " + ex.Message, "Error al registrar", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -76,8 +76,8 @@ Public Class FormRegisterStudent
     End Function
 
     Private Sub FormRegisterStudent_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.TYPE_SEXTableAdapter.Fill(Me.STUDENTSDataSet.TYPE_SEX)
-        Me.TYPE_IDENTITY_DOCUMENTTableAdapter.Fill(Me.STUDENTSDataSet.TYPE_IDENTITY_DOCUMENT)
+        TYPE_SEXTableAdapter.Fill(STUDENTSDataSet.TYPE_SEX)
+        TYPE_IDENTITY_DOCUMENTTableAdapter.Fill(STUDENTSDataSet.TYPE_IDENTITY_DOCUMENT)
         ComboBoxTypeIdentification.Focus()
         ComboBoxTypeIdentification.Text = TEXT_SELECT
         ComboBoxTypeSex.Text = TEXT_SELECT
