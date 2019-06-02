@@ -29,13 +29,14 @@ Partial Class FormLogin
         Me.TextBoxPassword = New System.Windows.Forms.TextBox()
         Me.ButtonLogin = New System.Windows.Forms.Button()
         Me.PictureBoxImageLogin = New System.Windows.Forms.PictureBox()
+        Me.LinkLabelCopyright = New System.Windows.Forms.LinkLabel()
         CType(Me.PictureBoxImageLogin, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LabelUser
         '
         Me.LabelUser.AutoSize = True
-        Me.LabelUser.Location = New System.Drawing.Point(196, 41)
+        Me.LabelUser.Location = New System.Drawing.Point(287, 24)
         Me.LabelUser.Name = "LabelUser"
         Me.LabelUser.Size = New System.Drawing.Size(57, 17)
         Me.LabelUser.TabIndex = 4
@@ -44,7 +45,7 @@ Partial Class FormLogin
         'TextBoxUser
         '
         Me.TextBoxUser.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBoxUser.Location = New System.Drawing.Point(260, 36)
+        Me.TextBoxUser.Location = New System.Drawing.Point(351, 19)
         Me.TextBoxUser.Name = "TextBoxUser"
         Me.TextBoxUser.Size = New System.Drawing.Size(144, 22)
         Me.TextBoxUser.TabIndex = 0
@@ -52,7 +53,7 @@ Partial Class FormLogin
         'LabelPassword
         '
         Me.LabelPassword.AutoSize = True
-        Me.LabelPassword.Location = New System.Drawing.Point(172, 71)
+        Me.LabelPassword.Location = New System.Drawing.Point(263, 54)
         Me.LabelPassword.Name = "LabelPassword"
         Me.LabelPassword.Size = New System.Drawing.Size(81, 17)
         Me.LabelPassword.TabIndex = 5
@@ -60,7 +61,7 @@ Partial Class FormLogin
         '
         'TextBoxPassword
         '
-        Me.TextBoxPassword.Location = New System.Drawing.Point(260, 66)
+        Me.TextBoxPassword.Location = New System.Drawing.Point(351, 49)
         Me.TextBoxPassword.Name = "TextBoxPassword"
         Me.TextBoxPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TextBoxPassword.Size = New System.Drawing.Size(144, 22)
@@ -68,7 +69,7 @@ Partial Class FormLogin
         '
         'ButtonLogin
         '
-        Me.ButtonLogin.Location = New System.Drawing.Point(293, 104)
+        Me.ButtonLogin.Location = New System.Drawing.Point(384, 87)
         Me.ButtonLogin.Name = "ButtonLogin"
         Me.ButtonLogin.Size = New System.Drawing.Size(111, 40)
         Me.ButtonLogin.TabIndex = 2
@@ -80,17 +81,28 @@ Partial Class FormLogin
         Me.PictureBoxImageLogin.Image = Global.Unidad_3_Paso_3.My.Resources.Resources.II_Principal_Image
         Me.PictureBoxImageLogin.Location = New System.Drawing.Point(12, 12)
         Me.PictureBoxImageLogin.Name = "PictureBoxImageLogin"
-        Me.PictureBoxImageLogin.Size = New System.Drawing.Size(129, 115)
+        Me.PictureBoxImageLogin.Size = New System.Drawing.Size(144, 137)
         Me.PictureBoxImageLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBoxImageLogin.TabIndex = 5
         Me.PictureBoxImageLogin.TabStop = False
+        '
+        'LinkLabelCopyright
+        '
+        Me.LinkLabelCopyright.AutoSize = True
+        Me.LinkLabelCopyright.Location = New System.Drawing.Point(8, 160)
+        Me.LinkLabelCopyright.Name = "LinkLabelCopyright"
+        Me.LinkLabelCopyright.Size = New System.Drawing.Size(497, 17)
+        Me.LinkLabelCopyright.TabIndex = 3
+        Me.LinkLabelCopyright.TabStop = True
+        Me.LinkLabelCopyright.Text = "Derechos de autor © 2019 por Juan Cubillos. Todos los derechos reservados"
         '
         'FormLogin
         '
         Me.AcceptButton = Me.ButtonLogin
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(425, 156)
+        Me.ClientSize = New System.Drawing.Size(517, 186)
+        Me.Controls.Add(Me.LinkLabelCopyright)
         Me.Controls.Add(Me.PictureBoxImageLogin)
         Me.Controls.Add(Me.ButtonLogin)
         Me.Controls.Add(Me.TextBoxPassword)
@@ -98,9 +110,9 @@ Partial Class FormLogin
         Me.Controls.Add(Me.TextBoxUser)
         Me.Controls.Add(Me.LabelUser)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Location = New System.Drawing.Point(535, 233)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(443, 203)
-        Me.MinimumSize = New System.Drawing.Size(443, 203)
+        Me.MaximumSize = New System.Drawing.Size(535, 233)
         Me.Name = "FormLogin"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Iniciar sesión"
@@ -116,4 +128,5 @@ Partial Class FormLogin
     Friend WithEvents TextBoxPassword As TextBox
     Friend WithEvents ButtonLogin As Button
     Friend WithEvents PictureBoxImageLogin As PictureBox
+    Friend WithEvents LinkLabelCopyright As LinkLabel
 End Class

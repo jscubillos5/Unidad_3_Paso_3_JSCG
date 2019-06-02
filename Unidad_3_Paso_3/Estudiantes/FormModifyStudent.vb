@@ -1,13 +1,23 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class FormModifyStudent
+
+#Region "Variables y constantes del formulario"
+
     Private student As PERSON
     Private Const TEXT_SELECT = "Seleccionar"
 
+#End Region
+
+#Region "Funcionalidades del formulario"
+
+    ' Evento de carga del formulario, JSCG, UNAD, 20190601
     Private Sub FormModifyStudent_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Cargar los combos del formulario, JSCG, UNAD, 20190601
         TYPE_SEXTableAdapter.Fill(STUDENTSDataSet.TYPE_SEX)
         TYPE_IDENTITY_DOCUMENTTableAdapter.Fill(STUDENTSDataSet.TYPE_IDENTITY_DOCUMENT)
         PERSONTableAdapter.Fill(STUDENTSDataSet.PERSON)
+        ' Asignar el texto de busqueda de los combos del formulario, JSCG, UNAD, 20190601
         ComboBoxTypeIdentification.Text = TEXT_SELECT
         ComboBoxTypeSex.Text = TEXT_SELECT
         SetStatusForm(False)
@@ -17,12 +27,17 @@ Public Class FormModifyStudent
         FormMenu.Show()
     End Sub
 
+    ' Cuando el usuario de click sobre la grilla, se buscaran los datos del estudiante, JSCG, UNAD, 20190601
     Private Sub DataGridViewFormModifyStudent_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewFormModifyStudent.CellClick
+        ' Buscar siempre que no sea con los valores del titulo, JSCG, UNAD, 20190601
         If e.RowIndex >= 0 Then
+            ' Obtener el número de identificación del estudiante, JSCG, UNAD, 20190601
             Dim identificationNumber As String = DataGridViewFormModifyStudent.Item(0, e.RowIndex).Value.ToString
             Dim DBConnection As New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Unidad_3_Paso_3.My.MySettings.STUDENTSConnectionString").ConnectionString)
             Dim db = New DataClassesSTUDENTSDataContext(DBConnection)
+            ' Buscar y obtener los datos del estudiante, JSCG, UNAD, 20190601
             Dim queryPerson = (From persons In db.PERSON Where persons.IDENTIFICATION_DOCUMENT = identificationNumber.Trim Select New With {.ID_PERSON = persons.ID_PERSON, .IDENTIFICATION_DOCUMENT = persons.IDENTIFICATION_DOCUMENT, .TYPE_IDENTITY_DOCUMENT = persons.TYPE_IDENTITY_DOCUMENT, .FIRST_NAME = persons.FIRST_NAME, .MIDDLE_NAME = persons.MIDDLE_NAME, .SURNAME = persons.SURNAME, .SECOND_SURNAME = persons.SECOND_SURNAME, .TELEPHONE = persons.TELEPHONE, .ADDRESS = persons.ADDRESS, .TYPE_SEX = persons.TYPE_SEX}).FirstOrDefault
+            ' Cargar los datos del estudiante en una instancia de la clase PERSON, JSCG, UNAD, 20190601
             student = New PERSON
             student.ID_PERSON = queryPerson.ID_PERSON
             student.IDENTIFICATION_DOCUMENT = queryPerson.IDENTIFICATION_DOCUMENT
@@ -34,6 +49,7 @@ Public Class FormModifyStudent
             student.TELEPHONE = queryPerson.TELEPHONE
             student.ADDRESS = queryPerson.ADDRESS
             student.TYPE_SEX = queryPerson.TYPE_SEX
+            ' Cargar los datos del formulario, JSCG, UNAD, 20190601
             ComboBoxTypeIdentification.SelectedValue = -1
             ComboBoxTypeIdentification.SelectedValue = student.TYPE_IDENTITY_DOCUMENT
             ComboBoxTypeIdentification.Update()
@@ -47,10 +63,12 @@ Public Class FormModifyStudent
             ComboBoxTypeSex.Update()
             TextBoxTelephone.Text = student.TELEPHONE.Trim
             TextBoxAddress.Text = student.ADDRESS.Trim
+            ' Cambiar el estado del formulario, JSCG, UNAD, 20190601
             SetStatusForm(True)
         End If
     End Sub
 
+    ' Dependiendo del valor de verdad enviado, procesar el estado de los objetos del formulario, JSCG, UNAD, 20190601
     Private Sub SetStatusForm(status As Boolean)
         ComboBoxTypeIdentification.Enabled = status
         TextBoxNumberIdentification.Enabled = status
@@ -61,20 +79,25 @@ Public Class FormModifyStudent
         ComboBoxTypeSex.Enabled = status
         TextBoxTelephone.Enabled = status
         TextBoxAddress.Enabled = status
+        ButtonModifyStudent.Enabled = status
+        ' El estado de estos objetos siempre es contrario al de los demas, ya que tener un estudiante para editar, no se debe buscar otro, JSCG, UNAD, 20190601
         DataGridViewFormModifyStudent.Enabled = Not status
         BindingNavigatorFormModifyStudent.Enabled = Not status
-        ButtonModifyStudent.Enabled = status
     End Sub
 
     Private Sub ButtonModifyStudent_Click(sender As Object, e As EventArgs) Handles ButtonModifyStudent.Click
         If ErrorInDataForm() Then
+            ' Alertar al usuario, el formulario tiene datos inconsistentes, JSCG, UNAD, 20190601
             MessageBox.Show("Existe un error en el diligenciamiento del formulario", "Error al modificar", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             Try
+                ' La actualización realizada en este sistema, es fisica, ya que el dato actualizado es eliminado y luego insertado con sus nuevos valores, JSCG, UNAD, 20190601
                 Dim DBConnection As New SqlConnection(Configuration.ConfigurationManager.ConnectionStrings("Unidad_3_Paso_3.My.MySettings.STUDENTSConnectionString").ConnectionString)
                 Dim db = New DataClassesSTUDENTSDataContext(DBConnection)
+                ' Borrar el estudiante anterior, JSCG, UNAD, 20190601
                 Dim queryDeletePerson = (From person In db.PERSON Where person.ID_PERSON = student.ID_PERSON Select person).FirstOrDefault
                 db.PERSON.DeleteOnSubmit(queryDeletePerson)
+                ' Crear un nuevo estudiante, JSCG, UNAD, 20190601
                 Dim studentNew As New PERSON
                 studentNew.IDENTIFICATION_DOCUMENT = TextBoxNumberIdentification.Text
                 studentNew.TYPE_IDENTITY_DOCUMENT = ComboBoxTypeIdentification.SelectedValue
@@ -85,19 +108,22 @@ Public Class FormModifyStudent
                 studentNew.TELEPHONE = TextBoxTelephone.Text
                 studentNew.ADDRESS = TextBoxAddress.Text
                 studentNew.TYPE_SEX = ComboBoxTypeSex.SelectedValue
+                ' Guardar el nuevo estudiante, JSCG, UNAD, 20190601
                 db.PERSON.InsertOnSubmit(studentNew)
                 db.SubmitChanges()
+                ' Los cambios, fueron aceptados, actualizar los recursos del formulario, JSCG, UNAD, 20190601
                 PERSONTableAdapter.Fill(STUDENTSDataSet.PERSON)
                 DataGridViewFormModifyStudent.Refresh()
                 MessageBox.Show("El estudiante, Nombre: " + studentNew.FIRST_NAME + " Apellido: " + studentNew.SURNAME + ". Fue actualizado con éxito.", "Estudiante modificado", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 CleanForm()
             Catch ex As Exception
-                MessageBox.Show("Atención, señor usuario ocurrio un error al registrar el estudiante, el error especifico es: " + ex.Message, "Error al registrar", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Atención, señor usuario ocurrio un error al modificar el estudiante, el error especifico es: " + ex.Message, "Error al modificar", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
             SetStatusForm(False)
         End If
     End Sub
 
+    ' Validar los objetos del formulario, JSCG, UNAD, 20190601
     Private Function ErrorInDataForm() As Boolean
         Dim errorInData As Boolean = False
         ErrorProviderFormModifyStudent.Clear()
@@ -139,6 +165,7 @@ Public Class FormModifyStudent
         Return errorInData
     End Function
 
+    ' Limpiar el formulario, JSCG, UNAD, 20190601
     Private Sub CleanForm()
         ComboBoxTypeIdentification.SelectedValue = -1
         TextBoxNumberIdentification.Text = Nothing
@@ -152,4 +179,7 @@ Public Class FormModifyStudent
         ComboBoxTypeIdentification.Text = TEXT_SELECT
         ComboBoxTypeSex.Text = TEXT_SELECT
     End Sub
+
+#End Region
+
 End Class

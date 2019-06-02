@@ -101,6 +101,12 @@
     <Compile Include="Estudiantes\FormRegisterStudent.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Estudiantes\FormSearchStudent.Designer.vb">
+      <DependentUpon>FormSearchStudent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Estudiantes\FormSearchStudent.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormLogin.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Estudiantes\FormRegisterStudent.resx">
       <DependentUpon>FormRegisterStudent.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estudiantes\FormSearchStudent.resx">
+      <DependentUpon>FormSearchStudent.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.vb</DependentUpon>
